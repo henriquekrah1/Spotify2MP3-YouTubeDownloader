@@ -34,7 +34,7 @@ pip install yt-dlp pandas
 [FFmpeg Download](https://ffmpeg.org/download.html)
 
 3. Export your YouTube cookies:
-   - Log into YouTube using Firefox
+   - Log into YouTube using Firefox (or your prefered Browser)
    - Use [cookies.txt extension](https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/)
    - Save the file as `cookies.txt` to the app folder
 
