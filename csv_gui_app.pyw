@@ -3,6 +3,7 @@ import yt_dlp
 from pathlib import Path
 import tkinter as tk
 from tkinter import filedialog, messagebox, ttk, scrolledtext
+import os
 
 class CSVtoMP3App:
     def __init__(self, root):
@@ -75,6 +76,9 @@ class CSVtoMP3App:
         messagebox.showinfo("Complete", f"Playlist downloaded to:\n{downloads_dir}")
 
     def download_track(self, title, artist, output_dir):
+        script_dir = Path(os.path.abspath(os.path.dirname(__file__)))
+        cookie_path = script_dir / "cookies.txt"
+
         search_query = f"{title} {artist} audio"
         output_template = str(output_dir / f"{artist} - {title}.%(ext)s")
 
@@ -83,7 +87,7 @@ class CSVtoMP3App:
             'noplaylist': True,
             'default_search': 'ytsearch1',
             'outtmpl': output_template,
-            'cookiefile': r'C:\Users\Desktop\CSV Playlist to Local Library\cookies.txt', #edit this line with the proper directory of your coockies file
+            'cookiefile': str(cookie_path),
             'postprocessors': [{
                 'key': 'FFmpegExtractAudio',
                 'preferredcodec': 'mp3',
